@@ -18,8 +18,10 @@ image.onload = function () {
     canvas.width = image.width;
     canvas.height = image.height;
 
+    ctx.filter = "none";
     ctx.drawImage(image,0,0);
-    canvasContainer.computedStyleMap.display = "block";
+    
+    canvasContainer.style.display = "block";
 }
 
 
@@ -28,11 +30,8 @@ function applyFilters(){
     const contrast = document.getElementById("contrast").value;
     const grayscale = document.getElementById("grayscale").value;
 
-    ctx.filter = `
-    brightness(${brightness}%)
-    contrast(${contrast}%)
-    grayscale(${grayscale}%)
-    `
+    ctx.filter = `brightness(${brightness}%) contrast(${contrast}%) grayscale(${grayscale}%)`;
+
     ctx.drawImage(image,0,0)
 }
 
